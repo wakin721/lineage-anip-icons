@@ -1,5 +1,5 @@
 """Validate the data-only source tree and prepare one immutable icon release."""
-import argparse, hashlib, json, math, re, zipfile
+import argparse, hashlib, json, math, re, struct, zipfile
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -35,6 +35,7 @@ def build(revision):
         if vector in checked:continue
         checked.add(vector);png=(ROOT/asset).read_bytes();v=json.loads((ROOT/vector).read_text(encoding='utf8'))
         if len(png)<33 or not png.startswith(b'\x89PNG\r\n\x1a\n') or hashlib.sha256(png).hexdigest()!=v['source']:raise ValueError('PNG source mismatch')
+        if struct.unpack('>II',png[16:24])!=(v['width'],v['height']):raise ValueError('PNG/vector size mismatch')
         if not 1<=v['width']<=1024 or not 1<=v['height']<=1024 or not 1<=len(v['layers'])<=4:raise ValueError('Vector shape')
         for layer in v['layers']:
             if not 1<=layer['alpha']<=255:raise ValueError('Vector alpha')
