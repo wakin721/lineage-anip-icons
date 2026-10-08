@@ -1,0 +1,31 @@
+name: Publish icons
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: stable-icons
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate and publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          revision="icons-${GITHUB_RUN_NUMBER}-${GITHUB_SHA:0:8}"
+          python tools/publish.py --revision "$revision"
+          gh release create "$revision" dist/icons.zip --title "$revision" --notes "Validated icon data for LineageOS ANIP."
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add channel/stable.json
+          git commit -m "Publish stable icon bundle $revision"
+          git push origin HEAD:main

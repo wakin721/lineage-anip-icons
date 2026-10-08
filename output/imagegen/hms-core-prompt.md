@@ -1,0 +1,7 @@
+# HMS Core 图标
+
+使用内置 image_gen 工具，参考当前 ANIP 主题中的 HMS 字标。最终图为 `hms-core-redrawn-v1.png`，原始生成 PNG 和透明通道原样保存。模块使用派生矢量轮廓，填充由 Android 主题决定。
+
+## 最终提示词
+
+Use case: precise-object-edit. Asset type: Android adaptive icon foreground for HMS Core. Image 1 is the original HMS Core monochrome glyph from this icon theme and is the identity reference. Reconstruct the exact uppercase text "HMS" as a clean high-resolution flat dark plum (#703650) logo mark. Keep the letter shapes recognizable as H, M, S, the short wide wordmark proportions and open negative spaces of the reference. The H has two thick stems and central crossbar; M is a clear angular capital M with central notch; S is a crisp geometric capital S. All three letters fully legible and evenly spaced. Create a perfectly uniform opaque silhouette with clean antialiased boundaries, no outline, no texture, no gradients or distressed pixels. Center the wordmark horizontally and vertically on a square truly transparent canvas with generous clear space: wordmark about 55% of canvas width, about 18% of canvas height. No circle, no background, no frame, no Huawei flower, no additional text including Core, no shadow, glow, bevel or 3D. This foreground will be color-tinted by Android and composed on the user's existing pink circular theme background, so export just the plum HMS letters on true transparency. High-definition precise technical logo asset.
