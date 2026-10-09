@@ -41,6 +41,7 @@ def build(revision):
             if not 1<=layer['alpha']<=255:raise ValueError('Vector alpha')
             commands(layer['path'])
         if 'desktopPath' in v:commands(v['desktopPath'])
+        if 'notificationPath' in v:commands(v['notificationPath'])
     out=ROOT/'dist';out.mkdir(exist_ok=True);total=0
     with zipfile.ZipFile(out/'icons.zip','w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in sorted(names):

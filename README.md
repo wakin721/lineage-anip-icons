@@ -5,7 +5,7 @@
 ## 文件
 
 - `anip/index.json`：应用包名、名称、颜色、图形引用、原贡献者。
-- `anip/icons/`：原始通知 PNG 和可编辑矢量 JSON。`layers` 用于通知，`desktopPath`（如有）用于桌面。
+- `anip/icons/`：原始通知 PNG 和可编辑矢量 JSON。`layers` 保留原通知轮廓，`desktopPath`（如有）用于桌面；模块 0.1.15 起支持 `notificationPath` 通知专用轮廓。HMS Core 的桌面与通知均使用生成稿派生轮廓。
 - `channel/stable.json`：稳定版发布标签、SHA256、文件长度、兼容协议。
 - Releases 的 `icons.zip`：供手机同步的完整数据包。
 - `output/imagegen/`：两张已发布重绘稿及原提示词；不是运行时代码。
